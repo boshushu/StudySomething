@@ -13,4 +13,8 @@ unsigned int BitCount2(unsigned int n);
 unsigned int BitCount3(unsigned int n);
 unsigned int BitCount_0(unsigned int n);
 
-
+/*
+File: KMP.cpp
+Func: KMPÀ„∑® µœ÷
+*/
+int KMP(char *p_Text, char *p_Pattern);
