@@ -2,7 +2,7 @@
 
 /*
 冒泡排序
-算法复杂度 O(n)
+时间复杂度 O(n)
 */
 int BubbleSort(int* Array, int iLen)
 {
@@ -17,7 +17,7 @@ int BubbleSort(int* Array, int iLen)
 
 /*
 选择排序
-算法复杂度 O(n^2)
+时间复杂度 O(n^2)
 */
 int SelectSort(int* Array, int iLen)
 {
@@ -38,7 +38,7 @@ int SelectSort(int* Array, int iLen)
 
 /*
 插入排序
-O(n^2)
+时间复杂度 O(n^2)
 */
 int InsertSort(int* Array, int iLen)
 {
