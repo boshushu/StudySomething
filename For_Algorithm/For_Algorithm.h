@@ -29,9 +29,18 @@ Func: BFS与DFS算法实现
 typedef struct _Node
 {
 	int value;
+	bool bIsVisited;
 	_Node *Left;
 	_Node *Right;
 } MyNode, p_MyNode;
 
 int BFS(struct _Node *p_Node);
 int DFS(struct _Node *p_Node);
+
+
+/*
+File:	Sort.cpp
+*/
+int BubbleSort(int* Array, int iLen);
+int SelectSort(int* Array, int iLen);
+int InsertSort(int* Array, int iLen);
