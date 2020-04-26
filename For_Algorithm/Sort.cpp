@@ -107,14 +107,13 @@ int DivisionArray(int* Array, int Left, int Right)
 	int BaseNum = Array[Left];
 	while (Left < Right)
 	{
-		while ((Left < Right) && (Array[Right] > BaseNum))	//从最右开始遍历，比基准数大的放右边
+		while ((Left < Right) && (Array[Right] >= BaseNum))	//从最右开始遍历，比基准数大的放右边
 			--Right;
 		Array[Left] = Array[Right];
 
-		while ((Left < Right) && (Array[Left] < BaseNum))	//从最左开始遍历比基准数小的放左边
+		while ((Left < Right) && (Array[Left] <= BaseNum))	//从最左开始遍历比基准数小的放左边
 			++Left;
 		Array[Right] = Array[Left];
-
 	}
 	Array[Left] = BaseNum;	//分割完成，此时Left左边的都比基准数小，Left右边的都比基准大
 	return Left;
@@ -127,8 +126,8 @@ int QuickSort(int* Array, int Left, int Right)
 		int start = DivisionArray(Array, Left, Right);
 	
 		QuickSort(Array, Left, start - 1);
-		
-		QuickSort(Array, start - 1, Right);
+
+		QuickSort(Array, start + 1, Right);
 	}
 
 	return 0;
