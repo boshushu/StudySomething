@@ -46,3 +46,5 @@ int SelectSort(int* Array, int iLen);
 int InsertSort(int* Array, int iLen);
 int ShellSort(int* Array, int iLen);
 int QuickSort(int* Array, int Left, int Right);
+void qSort(int lst[], int length);
+

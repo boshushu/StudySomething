@@ -1,5 +1,6 @@
+#pragma once
 #include "For_Algorithm.h"
-
+#include <stack>
 /*
 冒泡排序
 时间复杂度 O(n^2)
@@ -109,13 +110,13 @@ int DivisionArray(int* Array, int Left, int Right)
 	{
 		while ((Left < Right) && (Array[Right] >= BaseNum))	//从最右开始遍历，比基准数大的放右边
 			--Right;
-		Array[Left] = Array[Right];
+		Array[Left] = Array[Right];		//swap(Array[Left], Array[Right]);
 
 		while ((Left < Right) && (Array[Left] <= BaseNum))	//从最左开始遍历比基准数小的放左边
 			++Left;
-		Array[Right] = Array[Left];
+		Array[Right] = Array[Left];		//swap(Array[Left], Array[Right]);
 	}
-	Array[Left] = BaseNum;	//分割完成，此时Left左边的都比基准数小，Left右边的都比基准大
+	Array[Left] = BaseNum;				//如用swap,此处可注释
 	return Left;
 }
 
@@ -123,12 +124,40 @@ int QuickSort(int* Array, int Left, int Right)
 {
 	if (Left < Right)
 	{
-		int start = DivisionArray(Array, Left, Right);
+		int i = DivisionArray(Array, Left, Right);
 	
-		QuickSort(Array, Left, start - 1);
+		QuickSort(Array, Left, i - 1);
 
-		QuickSort(Array, start + 1, Right);
+		QuickSort(Array, i + 1, Right);
 	}
 
 	return 0;
+}
+
+//非递归
+void qSort(int lst[], int length)
+{
+	stack<pair<int, int>> mystack;
+	mystack.push(make_pair(0, length - 1));
+
+	while (!mystack.empty())
+	{
+		pair<int, int> top = mystack.top();
+		mystack.pop();
+		
+		int i = top.first, int j = top.second;
+		int BaseNum = lst[i];
+
+		while (i < j)
+		{
+			while ((i < j) && (lst[j] >= BaseNum)) j--;
+			swap(lst[i], lst[j]);
+
+			while ((i < j) && (lst[i] <= BaseNum)) i++;
+			swap(lst[i], lst[j]);
+		}
+
+		if (i > top.first) mystack.push(make_pair(top.first, i - 1));
+		if (j < top.second) mystack.push(make_pair(j + 1, top.second));
+	}
 }
