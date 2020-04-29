@@ -145,7 +145,7 @@ void qSort(int lst[], int length)
 		pair<int, int> top = mystack.top();
 		mystack.pop();
 		
-		int i = top.first, int j = top.second;
+		int i = top.first, j = top.second;
 		int BaseNum = lst[i];
 
 		while (i < j)

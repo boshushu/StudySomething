@@ -1,4 +1,5 @@
 #include "LinkList.h"
+using namespace std;
 
 LinkList::LinkList()
 {
