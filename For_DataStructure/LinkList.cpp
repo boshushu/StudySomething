@@ -17,21 +17,88 @@ LinkList::~LinkList()
 		delete head;
 }
 
-int LinkList::Insert(Node *p)
+int LinkList::GetLen()
 {
-	Node *tmp;
-	head->next = tmp;
-	for (int i = 0; i < length; i++)
+	if (head->next == nullptr)
+		return -1;
+	return length;
+}
+
+int LinkList::GetValue(int pos)
+{
+	Node *p = head;
+	int cnt = 0;
+
+	if (pos > length || length == 0)
+		return -1;
+
+	while (p->next != nullptr&&cnt++ != pos)
 	{
-		tmp = tmp->next;
+		p = p->next;
 	}
-	tmp->next = p;
-	p->next = nullptr;
+
+	return p->value;
+}
+
+int LinkList::Insert(int value)
+{
+	Node *p = head;
+	Node *newNode = new Node;
+	
+	while (p->next != nullptr)
+	{
+		p = p->next;
+	}
+	p->next = newNode;
+	newNode->value = value;
+	newNode->next = nullptr;
 	++length;
 
 	return 0;
 }
-int LinkList::Insert(int pos, Node *p)
+
+int LinkList::Insert(int pos, int value)
 {
+	Node *p = head;
+	Node *newNode = new Node;
+	int cnt = 0;
+	if (pos > length)
+		return -1;
+	
+	while (p->next != nullptr&&++cnt != pos)
+	{
+		p = p->next;
+	}
+	newNode->next = p->next;
+	newNode->value = value;
+	p->next = newNode;
+	++length;
+
+	return 0;
+}
+
+int LinkList::Remove()
+{
+	Node *p = head;
+	while (p->next != nullptr)
+	{
+		p = p->next;
+	}
+
+	p->next = nullptr;
+	--length;
+	return 0;
+}
+
+int LinkList::Remove(int pos)
+{
+	Node *p = head;
+	int cnt = 0;
+	while (p->next != nullptr &&cnt++ != pos)
+	{
+		p = p->next;
+	}
+	p->next = p->next->next;
+	--length;
 	return 0;
 }

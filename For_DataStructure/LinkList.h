@@ -14,13 +14,17 @@ public:
 	LinkList();
 	~LinkList();
 
-	int Insert(Node *p);
-	int Insert(int pos, Node *p);
+	int GetLen();
+	int GetValue(int pos);
+
+	int Insert(int value);
+	int Insert(int pos, int value);
 	int Remove();
 	int Remove(int pos);
 
 private:
 	Node *head;
 	int length;
+	
 
 };
